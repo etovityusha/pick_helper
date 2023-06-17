@@ -6,5 +6,5 @@ from models.base import BaseORM
 class User(BaseORM):
     __tablename__ = "user"
 
-    nickname: Mapped[str | None]
-    pass_hash: Mapped[str | None]
+    nickname: Mapped[str]
+    pass_hash: Mapped[str]
