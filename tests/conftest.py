@@ -6,4 +6,4 @@ from web.run import create_app
 
 @pytest.fixture(scope="session")
 def client() -> TestClient:
-    yield TestClient(app=create_app())
+    return TestClient(app=create_app())
