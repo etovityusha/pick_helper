@@ -24,7 +24,7 @@ jobs:
       - name: mypy
         run: |
           mypy --strict --cache-dir=/dev/null .
-      - name: pytest tests
+      - name: pytest
         run: |
           pytest
       - name: isort
