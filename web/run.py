@@ -1,8 +1,12 @@
 from fastapi import FastAPI
 
-app = FastAPI()
+from .router import router
 
 
-@app.get("/healthcheck")
-async def healthcheck() -> dict[str, str]:
-    return {"healthcheck": "OK"}
+def create_app() -> FastAPI:
+    application = FastAPI()
+    application.include_router(router=router)
+    return application
+
+
+app = create_app()

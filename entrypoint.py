@@ -13,10 +13,6 @@ if __name__ == "__main__":
                 f"uvicorn web.run:app --host {cfg.LISTEN_HOST} --port {cfg.LISTEN_PORT}",
                 shell=True,  # noqa[S602]
             )
-        case "new_migration":
-            subprocess.call(
-                "alembic revision --autogenerate",
-                shell=True,  # noqa[S602]
-            )
         case _:
-            raise ValueError("Unknown component")
+            msg = "Unknown component"
+            raise ValueError(msg)
