@@ -1,0 +1,49 @@
+[tool.mypy]
+python_version = "3.11"
+namespace_packages = false
+explicit_package_bases = false
+ignore_missing_imports = true
+follow_imports_for_stubs = false
+strict_optional = false
+strict = true
+
+show_error_context = true
+show_column_numbers = true
+show_error_codes = true
+pretty = true
+error_summary = true
+
+warn_no_return = true
+warn_return_any = true
+warn_unreachable = true
+disable_error_code = [
+
+]
+
+exclude = ["env", "venv"]
+
+[tool.ruff]
+exclude = [".git", "__pycache__", "venv", "env", "dist", "build", "alembic"]
+line-length = 120
+target-version = "py311"
+select = ["ALL"]
+ignore = [
+    "D100", # Missing docstring in public module
+    "D101", # Missing docstring in public class
+    "D102", # Missing docstring in public method
+    "D103", # Missing docstring in public function
+    "D104", # Missing docstring in public package
+    "D106", # Missing docstring in public nested class
+    "ANN401", # Dynamically typed expressions,
+    "N805", # First argument of a method should be named `self`
+]
+[tool.ruff.isort]
+combine-as-imports = true
+
+
+[tool.autopep8]
+max_line_length = 120
+
+[tool.black]
+line-length = 120
+target-version = ['py311']
