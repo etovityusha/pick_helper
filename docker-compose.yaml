@@ -1,0 +1,54 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:14.3
+    restart: always
+    environment:
+      POSTGRES_USER: "${WEB_POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${WEB_POSTGRES_PASSWORD}"
+      POSTGRES_DB: "${WEB_POSTGRES_DATABASE}"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - "${WEB_POSTGRES_PORT}:${WEB_POSTGRES_PORT}"
+    networks:
+      - default
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "${WEB_POSTGRES_USER}", "-d", "${WEB_POSTGRES_DATABASE}" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+
+  migrator:
+    build: .
+    command: migrator
+    env_file: .env
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - default
+
+  web:
+    build: .
+    command: web
+    env_file: .env
+    ports:
+      - "${WEB_LISTEN_PORT}:${WEB_LISTEN_PORT}"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+      - migrator
+    networks:
+      - default
+
+
+networks:
+  default:
+    driver: bridge
+
+volumes:
+  postgres_data:
