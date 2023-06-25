@@ -1,0 +1,9 @@
+import enum
+
+
+class PositionEnum(enum.Enum):
+    SAFE_LANE_CARRY = "SAFE_LANE_CARRY"
+    SAFE_LANE_SUPPORT = "SAFE_LANE_SUPPORT"
+    MID_LANE = "MID_LANE"
+    OFF_LANE_CORE = "OFF_LANE_CORE"
+    OFF_LANE_SUPPORT = "OFF_LANE_SUPPORT"

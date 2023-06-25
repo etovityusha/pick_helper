@@ -1,9 +1,9 @@
 from sqlalchemy.orm import Mapped
 
-from models.base import BaseORM
+from models.orm.base import BaseORM
 
 
-class User(BaseORM):
+class UserORM(BaseORM):
     __tablename__ = "user"
 
     nickname: Mapped[str]
