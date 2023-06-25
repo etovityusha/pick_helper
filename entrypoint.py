@@ -13,6 +13,8 @@ if __name__ == "__main__":
                 f"uvicorn web.run:app --host {cfg.LISTEN_HOST} --port {cfg.LISTEN_PORT}",
                 shell=True,  # noqa[S602]
             )
+        case "migrator":
+            subprocess.call("alembic upgrade head", shell=True)  # noqa[S602]
         case _:
             msg = "Unknown component"
             raise ValueError(msg)
