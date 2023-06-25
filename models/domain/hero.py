@@ -1,6 +1,6 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class Hero(BaseModel):
-    id: int
+    identity: int = Field(alias="id")
     title: str

@@ -14,9 +14,9 @@ class HeroRepo(abc.ABC):
         pass
 
 
-class AlchemyHeroRepo(AlchemyGenericRepository[Hero]):
-    def __init__(self, session: Session, domain_model: Hero, orm_model: HeroORM):
-        super().__init__(session, domain_model, orm_model)
+class AlchemyHeroRepo(HeroRepo, AlchemyGenericRepository[Hero]):
+    def __init__(self, session: Session) -> None:
+        super().__init__(session, Hero, HeroORM)
 
     def create(self, id_: int, title: str) -> None:
         stmt = insert(self._orm_model).values({"id": id_, "title": title})

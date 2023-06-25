@@ -30,7 +30,9 @@ def upgrade() -> None:
         "match",
         sa.Column("title", sa.String(), nullable=False),
         sa.Column(
-            "parsing_status", sa.Enum("PENDING", "IN_PROGRESS", "COMPLETED", name="parsingstatusenum"), nullable=False
+            "parsing_status",
+            sa.Enum("PENDING", "IN_PROGRESS", "COMPLETED", "UPDATE_REQUIRED", name="parsingstatusenum"),
+            nullable=False,
         ),
         sa.Column("id", sa.Integer(), nullable=False),
         sa.Column("created_at", sa.DateTime(), server_default=sa.text("now()"), nullable=False),

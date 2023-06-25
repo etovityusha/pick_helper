@@ -33,9 +33,14 @@ ignore = [
     "D102", # Missing docstring in public method
     "D103", # Missing docstring in public function
     "D104", # Missing docstring in public package
+    "D105", #  Missing docstring in magic method
     "D106", # Missing docstring in public nested class
+    "D107", # Missing docstring in `__init__`
+    "ANN101", # Missing type annotation for `self` in method
     "ANN401", # Dynamically typed expressions,
     "N805", # First argument of a method should be named `self`
+    "D211", # D203 and D211 conflict
+    "D212", # D212 and D213 conflict
 ]
 [tool.ruff.isort]
 combine-as-imports = true
